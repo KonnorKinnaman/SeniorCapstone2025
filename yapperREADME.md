@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Yapper
 
 Yapper is a lightweight, offline, easily extendible, text-to-speech library with 136 voices across 39 localities (thanks to the [piper project](https://github.com/rhasspy/piper)), it can also optionally use SOTA LLMs through their free APIs to enhance(personalize) your text according to a predefined system-message(personality).
@@ -108,3 +109,7 @@ to discuss what you would like to change.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+=======
+# SeniorCapstone2025
+Landing place for all code related to SOET Team 8 Senior Capstone 2025
+>>>>>>> fef602d4160a17b7bb262dde1bb6722ba866a0d8
