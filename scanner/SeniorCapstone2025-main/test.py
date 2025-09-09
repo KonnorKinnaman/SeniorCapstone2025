@@ -167,3 +167,7 @@ if __name__ == "__main__":
         sys.exit(1)
     else:
         print("\033[92m✅ test passed!\033[0m")
+
+# Test: If using Powershell then use both lines, but if using terminal below then only need second line:
+# cd "C:\Users\ayoub\OneDrive - purdue.edu\Desktop\ENGT 481\SeniorCapstone2025-main"
+# python test.py speakers
