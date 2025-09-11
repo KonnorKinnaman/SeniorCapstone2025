@@ -123,7 +123,7 @@ class ImmersiveActivity : AppSystemActivity() {
                     webView.loadUrl(message)
                   }
                 }
-            registerReceiver(receiver, IntentFilter("com.mycompany.PLAY_VIDEO"))
+            registerReceiver(receiver, IntentFilter("com.mycompany.PLAY_VIDEO"), RECEIVER_EXPORTED)
           }
         },
         // Registering Activity-based compose panel
