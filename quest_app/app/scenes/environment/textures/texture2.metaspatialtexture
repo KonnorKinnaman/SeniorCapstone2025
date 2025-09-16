@@ -5,4 +5,4 @@ entities:
     com.meta.components.Texture:
       image: ref:ceilingBake_beauty
 metadata:
-  version: 1.0
+  version: 1.34

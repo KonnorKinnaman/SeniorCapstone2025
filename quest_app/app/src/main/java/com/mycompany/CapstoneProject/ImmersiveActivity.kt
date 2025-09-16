@@ -71,11 +71,12 @@ class ImmersiveActivity : AppSystemActivity() {
       environmentMesh?.defaultShaderOverride = SceneMaterial.UNLIT_SHADER
       environmentEntity?.setComponent(environmentMesh!!)
     }
+
   }
 
   override fun onSceneReady() {
     super.onSceneReady()
-
+    scene.enablePassthrough(enabled = true)
     scene.setLightingEnvironment(
         ambientColor = Vector3(0f),
         sunColor = Vector3(7.0f, 7.0f, 7.0f),
@@ -85,7 +86,7 @@ class ImmersiveActivity : AppSystemActivity() {
     scene.updateIBLEnvironment("environment.env")
 
     scene.setViewOrigin(0.0f, 0.0f, 2.0f, 180.0f)
-
+    /*
     Entity.create(
         listOf(
             Mesh(Uri.parse("mesh://skybox"), hittable = MeshCollision.NoCollision),
@@ -95,7 +96,7 @@ class ImmersiveActivity : AppSystemActivity() {
             },
             Transform(Pose(Vector3(x = 0f, y = 0f, z = 0f))),
         )
-    )
+    )*/
   }
 
   override fun registerPanels(): List<PanelRegistration> {
@@ -138,6 +139,11 @@ class ImmersiveActivity : AppSystemActivity() {
     )
   }
 
+  /*override fun registerPanelsCustom() : List <PanelRegistration> {
+    return listOf(
+      PanelRegistration(registrationId = R.id.panel_activity)
+    )
+  }*/
   override fun onDestroy() {
     unregisterReceiver(receiver)
     super.onDestroy()

@@ -15,11 +15,17 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.graphics.Paint
 
 class PanelActivity : ComponentActivity() {
   companion object {
@@ -42,7 +48,7 @@ class PanelActivity : ComponentActivity() {
                 "https://www.youtube.com/embed/UnWCxIlKyNM?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
             Pair(
-                "Other Sensors",
+                "MicroPilot",
                 "https://www.youtube.com/embed/0Q9cH-JxEGg?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
         )
@@ -63,7 +69,9 @@ fun CardList() {
       modifier =
           Modifier.clip(RoundedCornerShape(32.dp))
               .fillMaxSize()
-              .background(Color(0xfffffbfe))
+              .background(
+                          Color(0xff252533)
+              )
               .padding(16.dp),
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.CenterHorizontally,
@@ -88,7 +96,15 @@ fun CardItem(title: String, onClick: () -> Unit) {
       modifier =
           Modifier.fillMaxWidth()
               .clip(RoundedCornerShape(16.dp))
-              .background(Color(0x7f11a7ed))
+              .background(
+                  brush = Brush.linearGradient(
+                      colors = listOf(
+                          Color(0xffa4a2e0),
+                          Color(0xeeebebf5)
+                      )
+                  )
+              )
+
               .clickable(onClick = onClick),
   ) {
     Column(

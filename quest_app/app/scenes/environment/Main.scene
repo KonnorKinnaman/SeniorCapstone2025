@@ -5,8 +5,6 @@ entities:
           {}
         com.meta.components.Scene:
           nodes:
-            - ref:backWall_geo
-            - ref:ceiling_geo.002
             - ref:floorBase_geo.002
       tag: Scene
   com.meta.models.SceneNode:
@@ -14,62 +12,29 @@ entities:
         com.meta.components.Animatable:
           {}
         com.meta.components.Name:
-          name: ceiling_geo.002
-        com.meta.components.SceneNode:
-          rotation.data:
-            - 0.70710665
-            - 0.707106888
-            - 0
-            - 0
-          rotation.format: 1
-          scale:
-            - 0.00999999978
-            - 0.0100000007
-            - 0.0100000007
-        com.meta.components.SceneNodeMesh:
-          mesh: ref:Mesh.036
-      tag: ceiling_geo.002
-    - components:
-        com.meta.components.Animatable:
-          {}
-        com.meta.components.Name:
           name: floorBase_geo.002
+        com.meta.components.PointerNodeInverseComponent:
+          {}
         com.meta.components.SceneNode:
           rotation.data:
             - 0.70710665
             - 0.707106888
             - 0
             - 0
-          rotation.format: 1
+          rotation.format: Quaternion
           scale:
             - 0.00999999978
             - 0.0100000007
             - 0.0100000007
-        com.meta.components.SceneNodeMesh:
-          mesh: ref:Mesh.037
-      tag: floorBase_geo.002
-    - components:
-        com.meta.components.Animatable:
-          {}
-        com.meta.components.Name:
-          name: backWall_geo
-        com.meta.components.SceneNode:
-          rotation.data:
-            - 0.683012724
-            - 0.683012664
-            - 0.183012679
-            - -0.183012679
-          rotation.format: 1
-          scale:
-            - 0.00999999978
-            - 0.00999999978
-            - 0.00999999885
           translation:
             - 0
-            - 0.0199999884
+            - -1
             - 0
+          componentVersion: 1
         com.meta.components.SceneNodeMesh:
-          mesh: ref:Mesh.034
-      tag: backWall_geo
+          mesh: ref:Mesh.037
+        com.meta.components.Visibility:
+          visible: true
+      tag: floorBase_geo.002
 metadata:
-  version: 1.0
+  version: 1.34
