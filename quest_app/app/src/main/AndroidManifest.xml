@@ -30,7 +30,7 @@
   <!-- Tell the system this app can render passthrough -->
   <uses-feature
     android:name="com.oculus.feature.PASSTHROUGH"
-    android:required="false"
+    android:required="true"
   />
   <!-- Tell the system this app uses the virtual keyboard extensions -->
   <uses-feature

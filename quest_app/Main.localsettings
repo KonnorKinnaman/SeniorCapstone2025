@@ -1,4 +1,5 @@
 data:
   tabs:
-    - Composition1
-  current_tab: Composition1
+    - app/build/intermediates/assets/debug/mergeDebugAssets/data/common/locomotion_cursor.glb
+    - app/src/main/assets/scenes/environment.gltf
+  current_tab: app/src/main/assets/scenes/environment.gltf
