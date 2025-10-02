@@ -1,64 +1,59 @@
 entities:
   components:
     com.meta.components.Name:
-      name: ceilingBake_mat
+      name: Chrome Rough Default
     com.meta.components.PbrMaterial:
       alphaCutoff: 0.5
-      alphaMode: Opaque
-      baseColorFactor.colorspace: RGB
+      alphaMode: Blend
+      baseColorFactor.colorspace: HSL
       baseColorFactor.data:
-        - 1
-        - 1
-        - 1
+        - 180
+        - 0.978720009
+        - 0.477100015
         - 1
       baseColorFactor.type: color4
-      baseColorTexture.coord: 1
       baseColorTextureTransform.scale:
         - 1
         - 1
-      clearcoatNormalTexture.coord: -1
       clearcoatNormalTexture.scale: 1
       clearcoatNormalTextureTransform.scale:
         - 1
         - 1
-      clearcoatRoughnessTexture.coord: -1
       clearcoatRoughnessTextureTransform.scale:
         - 1
         - 1
-      clearcoatTexture.coord: -1
       clearcoatTextureTransform.scale:
         - 1
         - 1
-      emissiveFactor.colorspace: RGB
+      emissiveFactor.colorspace: HSL
+      emissiveFactor.data:
+        - 0
+        - 0
+        - 0
+        - 1
       emissiveFactor.type: color4
-      emissiveStrength: 1
-      emissiveTexture.coord: -1
+      emissiveStrength: 0.504899979
       emissiveTextureTransform.scale:
         - 1
         - 1
       ior: 1.5
-      metallicRoughnessTexture.coord: -1
       metallicRoughnessTextureTransform.scale:
         - 1
         - 1
-      normalTexture.coord: -1
       normalTexture.scale: 1
       normalTextureTransform.scale:
         - 1
         - 1
-      occlusionTexture.coord: -1
       occlusionTexture.textureStrength: 1
       occlusionTextureTransform.scale:
         - 1
         - 1
-      roughnessFactor: 0.5
+      roughnessFactor: 0.649999976
       sheenColorFactor.colorspace: RGB
       sheenColorFactor.type: color3
-      sheenColorTexture.coord: -1
       sheenColorTransform.scale:
         - 1
         - 1
-      sheenRoughnessTexture.coord: -1
       sheenRoughnessTransform.scale:
         - 1
         - 1
@@ -68,16 +63,13 @@ entities:
         - 1
         - 1
       specularColorFactor.type: color3
-      specularColorTexture.coord: -1
       specularColorTextureTransform.scale:
         - 1
         - 1
       specularFactor: 1
-      specularTexture.coord: -1
       specularTextureTransform.scale:
         - 1
         - 1
-      transmissionTexture.coord: -1
       volumeAttenuationColor.colorspace: RGB
       volumeAttenuationColor.data:
         - 1
@@ -85,9 +77,8 @@ entities:
         - 1
       volumeAttenuationColor.type: color3
       volumeAttenuationDistance: 3.40282347e+38
-      volumeThicknessTexture.coord: -1
       componentVersion: 1
-      baseColorTexture.texture: ref:texture2
+      baseColorTexture.texture: ref:New Texture
     com.meta.components.PointerNodeInverseComponent:
       {}
     com.meta.components.StandardMaterial:

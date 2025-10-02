@@ -1,8 +1,9 @@
 entities:
   components:
     com.meta.components.Name:
-      name: texture3
+      name: New Texture
     com.meta.components.Texture:
-      image: ref:floorScreenBake_beauty
+      image: ref:946783_OE3T260_test_photoroom
+      sampler: ref:Sampler
 metadata:
   version: 1.34
