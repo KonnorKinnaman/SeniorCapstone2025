@@ -3,6 +3,7 @@ plugins {
   alias(libs.plugins.jetbrains.kotlin.android)
   alias(libs.plugins.meta.spatial.plugin)
   alias(libs.plugins.jetbrains.kotlin.plugin.compose)
+  id("com.chaquo.python")
 }
 
 android {
@@ -19,6 +20,9 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+    ndk {
+      abiFilters += listOf("arm64-v8a", "x86_64")
+    }
     // Update the ndkVersion to the right version for your app
     // ndkVersion = "27.0.12077973"
   }
@@ -43,6 +47,7 @@ android {
   }
   kotlinOptions { jvmTarget = "17" }
 }
+
 
 //noinspection UseTomlInstead
 dependencies {

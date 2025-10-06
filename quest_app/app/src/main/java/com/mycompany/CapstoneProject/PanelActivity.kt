@@ -1,5 +1,6 @@
 package com.mycompany.CapstoneProject
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,26 +12,26 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.nativeCanvas
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import android.graphics.Paint
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
+import com.chaquo.python.PyException
+import android.util.Log
+import android.widget.Toast
 
 class PanelActivity : ComponentActivity() {
+    val test_string: String
   companion object {
-    val webViewUrls: List<Pair<String, String>> =
-        listOf(
+    val webViewUrls: MutableList<Pair<String, String>> =
+        mutableListOf(
             Pair(
                 "Fluid Analysis and Applications",
                 "https://www.youtube.com/embed/6aKbrPp09jo?autoplay=1;fs=1;autohide=0;hd=0;",
@@ -48,7 +49,7 @@ class PanelActivity : ComponentActivity() {
                 "https://www.youtube.com/embed/UnWCxIlKyNM?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
             Pair(
-                "MicroPilot",
+                "Micropilot",
                 "https://www.youtube.com/embed/0Q9cH-JxEGg?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
         )
@@ -57,14 +58,29 @@ class PanelActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent { CardList() }
+      if (!Python.isStarted()) {
+          Python.start(AndroidPlatform(this))
+      }
+
+      val py = Python.getInstance()
+      val pymod = py.getModule("test")
+      try {
+          val result1 = pymod.callAttr("testFun")
+          val test_string = result1.toString()
+          if (test_string != "This is the test string") {
+
+              simpleText()
+          }
+
+      } catch (e: PyException) {
+          Log.ERROR
+      }
   }
 }
-
 @Preview
 @Composable
 fun CardList() {
-  val context = LocalContext.current
-
+    val context = LocalContext.current
   Column(
       modifier =
           Modifier.clip(RoundedCornerShape(32.dp))
@@ -88,6 +104,7 @@ fun CardList() {
         )
       }
     }
+
   }
 }
 @Composable
@@ -115,4 +132,7 @@ fun CardItem(title: String, onClick: () -> Unit) {
       BasicText(text = title, style = TextStyle(fontSize = 25.sp))
     }
   }
+}
+fun simpleText(context: Context, message: String) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }

@@ -44,6 +44,8 @@ class ImmersiveActivity : AppSystemActivity() {
   lateinit var receiver: BroadcastReceiver
 
   override fun registerFeatures(): List<SpatialFeature> {
+
+
     val features =
         mutableListOf<SpatialFeature>(VRFeature(this), IsdkFeature(this, spatial, systemManager))
     if (BuildConfig.DEBUG) {

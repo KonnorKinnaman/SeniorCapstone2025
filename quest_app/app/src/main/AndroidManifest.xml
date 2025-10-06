@@ -80,5 +80,8 @@
       android:theme="@style/Theme.Transparent"
       android:exported="true"
     />
+    <meta-data
+      android:name="com.chaquo.python.android.PyApplication"
+      />
   </application>
 </manifest>

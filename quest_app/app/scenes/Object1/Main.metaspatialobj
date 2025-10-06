@@ -1,0 +1,155 @@
+scene: docref:Main.scene
+entities:
+  com.meta.models.AssetFolder:
+    - components:
+        com.meta.components.AssetFolder:
+          assets:
+            - ref:Material
+            - ref:cube1
+        com.meta.components.Name:
+          name: Cube
+  com.meta.models.AssetRoot:
+    - components:
+        com.meta.components.AssetMetadata:
+          {}
+        com.meta.components.AssetRoot:
+          defaultScene: ref:Scene
+          scenes:
+            - ref:Scene
+  com.meta.models.Geometry:
+    - components:
+        com.meta.components.Geometry:
+          data: binary/Geometry.bin
+          mode: Triangles
+      tag: Geometry
+  com.meta.models.Image:
+    - components:
+        com.meta.components.Asset:
+          path: assets/PavingStones076.png
+        com.meta.components.Image:
+          height: 1024
+          mimeType: image/png
+          width: 1024
+        com.meta.components.Name:
+          name: PavingStones076
+    - components:
+        com.meta.components.Asset:
+          path: assets/PavingStones076_4K-PNG_NormalGL.png
+        com.meta.components.Image:
+          height: 4096
+          mimeType: image/png
+          width: 4096
+        com.meta.components.Name:
+          name: PavingStones076_4K-PNG_NormalGL
+      tag: PavingStones076_4K-PNG_NormalGL
+    - components:
+        com.meta.components.Asset:
+          path: assets/PavingStones076_4K-PNG_AmbientOcclusion.png
+        com.meta.components.Image:
+          height: 4096
+          mimeType: image/png
+          width: 4096
+        com.meta.components.Name:
+          name: PavingStones076_4K-PNG_AmbientOcclusion
+      tag: PavingStones076_4K-PNG_AmbientOcclusion
+    - components:
+        com.meta.components.Asset:
+          path: assets/PavingStones076_4K-PNG_NormalDX.png
+        com.meta.components.Image:
+          height: 4096
+          mimeType: image/png
+          width: 4096
+        com.meta.components.Name:
+          name: PavingStones076_4K-PNG_NormalDX
+      tag: PavingStones076_4K-PNG_NormalDX
+    - components:
+        com.meta.components.Asset:
+          path: assets/PavingStones076_4K-PNG_Roughness.png
+        com.meta.components.Image:
+          height: 4096
+          mimeType: image/png
+          width: 4096
+        com.meta.components.Name:
+          name: PavingStones076_4K-PNG_Roughness
+      tag: PavingStones076_4K-PNG_Roughness
+  com.meta.models.Material:
+    - uri: docref:materials/Material.metaspatialmaterial
+      tag: Material
+  com.meta.models.Mesh:
+    - components:
+        com.meta.components.Mesh:
+          morphTargetNames:
+            []
+          morphTargetWeights:
+            []
+          primitives:
+            - ref:Primitive
+        com.meta.components.Name:
+          name: cube
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+      tag: cube1
+    - components:
+        com.meta.components.Mesh:
+          morphTargetNames:
+            []
+          morphTargetWeights:
+            []
+        com.meta.components.Name:
+          name: Mesh1
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+  com.meta.models.Primitive:
+    - components:
+        com.meta.components.Primitive:
+          geometry: ref:Geometry
+          material: ref:Material
+      tag: Primitive
+  com.meta.models.Sampler:
+    - components:
+        com.meta.components.Name:
+          {}
+        com.meta.components.Sampler:
+          magFilter: Linear
+          minFilter: Linear
+          wrapS: Repeat
+          wrapT: Repeat
+      tag: Sampler
+    - components:
+        com.meta.components.Name:
+          {}
+        com.meta.components.Sampler:
+          magFilter: Linear
+          minFilter: Linear
+          wrapS: Repeat
+          wrapT: Repeat
+      tag: Sampler1
+    - components:
+        com.meta.components.Name:
+          {}
+        com.meta.components.Sampler:
+          magFilter: Linear
+          minFilter: Linear
+          wrapS: Repeat
+          wrapT: Repeat
+      tag: Sampler2
+    - components:
+        com.meta.components.Name:
+          {}
+        com.meta.components.Sampler:
+          magFilter: Linear
+          minFilter: Linear
+          wrapS: Repeat
+          wrapT: Repeat
+      tag: Sampler3
+  com.meta.models.Texture:
+    - uri: docref:textures/New Texture.metaspatialtexture
+      tag: New Texture
+    - uri: docref:textures/New Texture1.metaspatialtexture
+      tag: New Texture1
+    - uri: docref:textures/New Texture2.metaspatialtexture
+      tag: New Texture2
+    - uri: docref:textures/New Texture3.metaspatialtexture
+      tag: New Texture3
+metadata:
+  version: 1.34
