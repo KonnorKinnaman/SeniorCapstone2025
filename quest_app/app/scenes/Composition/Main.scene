@@ -5,34 +5,12 @@ entities:
           {}
         com.meta.components.Scene:
           nodes:
+            - ref:plane
             - ref:Micropilot
             - ref:ComposeListPanel
-            - ref:Environment
             - ref:WebviewPanel
       tag: Scene
   com.meta.models.SceneNode:
-    - components:
-        com.meta.components.Animatable:
-          {}
-        com.meta.components.DocumentReference:
-          transformType: None
-          documentReference: projref:environment/Main.metaspatialobj
-        com.meta.components.Name:
-          name: Environment
-        com.meta.components.PointerNodeInverseComponent:
-          {}
-        com.meta.components.SceneNode:
-          rotation.format: Euler
-          scale:
-            - 1
-            - 1
-            - 1
-          componentVersion: 1
-        com.meta.components.Visibility:
-          visible: true
-        com.meta.spatial.toolkit.SupportsLocomotion:
-          {}
-      tag: Environment
     - components:
         com.meta.components.Animatable:
           {}
@@ -123,5 +101,29 @@ entities:
         com.meta.spatial.toolkit.Grabbable:
           {}
       tag: Micropilot
+    - components:
+        com.meta.components.Animatable:
+          {}
+        com.meta.components.DocumentReference:
+          transformType: None
+          documentReference: projref:plane/Main.metaspatialobj
+        com.meta.components.Name:
+          name: plane
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+        com.meta.components.SceneNode:
+          rotation.format: Euler
+          scale:
+            - 5
+            - 1
+            - 5
+          translation:
+            - 0
+            - -1
+            - 0
+          componentVersion: 1
+        com.meta.components.Visibility:
+          visible: true
+      tag: plane
 metadata:
   version: 1.34

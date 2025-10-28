@@ -66,7 +66,7 @@ class ImmersiveActivity : AppSystemActivity() {
     loadGLXF().invokeOnCompletion {
       // get the environment mesh from Meta Spatial Editor and set it to use an unlit shader.
       val composition = glXFManager.getGLXFInfo("example_key_name")
-      val environmentEntity: Entity? = composition.getNodeByName("Environment").entity
+      val environmentEntity: Entity? = composition.getNodeByName("plane").entity
       val environmentMesh = environmentEntity?.getComponent<Mesh>()
       environmentMesh?.defaultShaderOverride = SceneMaterial.UNLIT_SHADER
       environmentEntity?.setComponent(environmentMesh!!)
