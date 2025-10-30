@@ -1,0 +1,9 @@
+entities:
+  components:
+    com.meta.components.Name:
+      name: New Texture
+    com.meta.components.Texture:
+      image: ref:946783_OE3T260_test_photoroom
+      sampler: ref:Sampler
+metadata:
+  version: 1.34

@@ -1,0 +1,9 @@
+entities:
+  components:
+    com.meta.components.Name:
+      name: b7f86996aebd221da8656b44e809ed38
+    com.meta.components.Texture:
+      image: ref:b7f86996aebd221da8656b44e809ed38
+      sampler: ref:sampler0
+metadata:
+  version: 1.34

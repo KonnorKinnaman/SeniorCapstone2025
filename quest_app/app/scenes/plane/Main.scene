@@ -1,0 +1,36 @@
+entities:
+  com.meta.models.Scene:
+    - components:
+        com.meta.components.Name:
+          {}
+        com.meta.components.Scene:
+          nodes:
+            - ref:plane
+      tag: Scene
+  com.meta.models.SceneNode:
+    - components:
+        com.meta.components.Animatable:
+          {}
+        com.meta.components.Name:
+          name: plane
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+        com.meta.components.SceneNode:
+          rotation.data:
+            - 1
+            - 0
+            - 0
+            - 0
+          rotation.format: Quaternion
+          scale:
+            - 10
+            - 1
+            - 10
+          componentVersion: 1
+        com.meta.components.SceneNodeMesh:
+          mesh: ref:plane2
+        com.meta.components.Visibility:
+          visible: true
+      tag: plane
+metadata:
+  version: 1.34

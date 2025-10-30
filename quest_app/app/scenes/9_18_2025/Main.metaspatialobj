@@ -1,0 +1,100 @@
+scene: docref:Main.scene
+entities:
+  com.meta.models.AssetFolder:
+    - components:
+        com.meta.components.AssetFolder:
+          assets:
+            - ref:125231843aac79661c1ac14049d6582d
+            - ref:46e8c6ca182c4a3427e89d41be95ff50
+            - ref:b7f86996aebd221da8656b44e809ed38
+            - ref:material1
+            - ref:mesh2
+        com.meta.components.Name:
+          name: 9_18_2025
+  com.meta.models.AssetRoot:
+    - components:
+        com.meta.components.AssetMetadata:
+          {}
+        com.meta.components.AssetRoot:
+          defaultScene: ref:Scene
+          scenes:
+            - ref:Scene
+  com.meta.models.Geometry:
+    - components:
+        com.meta.components.Geometry:
+          data: binary/Geometry.bin
+          mode: Triangles
+      tag: Geometry
+  com.meta.models.Image:
+    - components:
+        com.meta.components.Asset:
+          path: assets/46e8c6ca182c4a3427e89d41be95ff50.jpg
+        com.meta.components.Image:
+          height: 4096
+          mimeType: image/jpeg
+          width: 4096
+        com.meta.components.Name:
+          name: 46e8c6ca182c4a3427e89d41be95ff50
+      tag: 46e8c6ca182c4a3427e89d41be95ff50
+    - components:
+        com.meta.components.Asset:
+          path: assets/b7f86996aebd221da8656b44e809ed38.jpg
+        com.meta.components.Image:
+          height: 4096
+          mimeType: image/jpeg
+          width: 4096
+        com.meta.components.Name:
+          name: b7f86996aebd221da8656b44e809ed38
+      tag: b7f86996aebd221da8656b44e809ed38
+    - components:
+        com.meta.components.Asset:
+          path: assets/125231843aac79661c1ac14049d6582d.jpg
+        com.meta.components.Image:
+          height: 4096
+          mimeType: image/jpeg
+          width: 4096
+        com.meta.components.Name:
+          name: 125231843aac79661c1ac14049d6582d
+      tag: 125231843aac79661c1ac14049d6582d
+  com.meta.models.Material:
+    - uri: docref:materials/material1.metaspatialmaterial
+      tag: material1
+  com.meta.models.Mesh:
+    - components:
+        com.meta.components.Mesh:
+          morphTargetNames:
+            []
+          morphTargetWeights:
+            []
+          primitives:
+            - ref:Primitive
+        com.meta.components.Name:
+          name: mesh2
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+      tag: mesh2
+  com.meta.models.Primitive:
+    - components:
+        com.meta.components.Primitive:
+          geometry: ref:Geometry
+          material: ref:material1
+      tag: Primitive
+  com.meta.models.Sampler:
+    - components:
+        com.meta.components.Name:
+          name: sampler0
+        com.meta.components.Sampler:
+          magFilter: Undefined
+          minFilter: Undefined
+          wrapS: Repeat
+          wrapT: Repeat
+      tag: sampler0
+  com.meta.models.Texture:
+    - uri: docref:textures/125231843aac79661c1ac14049d6582d1.metaspatialtexture
+      tag: 125231843aac79661c1ac14049d6582d1
+    - uri: docref:textures/46e8c6ca182c4a3427e89d41be95ff501.metaspatialtexture
+      tag: 46e8c6ca182c4a3427e89d41be95ff501
+    - uri: docref:textures/b7f86996aebd221da8656b44e809ed381.metaspatialtexture
+      tag: b7f86996aebd221da8656b44e809ed381
+metadata:
+  version: 1.34
