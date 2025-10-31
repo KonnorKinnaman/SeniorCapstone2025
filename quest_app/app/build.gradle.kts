@@ -5,9 +5,13 @@ plugins {
   alias(libs.plugins.jetbrains.kotlin.plugin.compose)
 }
 
+configurations.all {
+    exclude(group = "org.jspecify", module = "jspecify")
+}
+
 android {
   namespace = "com.mycompany.CapstoneProject"
-  compileSdk = 34
+  compileSdk = 36
 
   defaultConfig {
     applicationId = "com.mycompany.CapstoneProject"
@@ -23,7 +27,11 @@ android {
     // ndkVersion = "27.0.12077973"
   }
 
-  packaging { resources.excludes.add("META-INF/LICENSE") }
+  packaging {
+    resources {
+        excludes.add("META-INF/LICENSE")
+    }
+  }
 
   lint { abortOnError = false }
 
@@ -41,7 +49,10 @@ android {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
   }
-  kotlinOptions { jvmTarget = "17" }
+  kotlinOptions { 
+    jvmTarget = "17"
+    freeCompilerArgs += "-Xopt-in=androidx.compose.ui.ExperimentalComposeUiApi"
+   }
 }
 
 //noinspection UseTomlInstead
@@ -71,6 +82,8 @@ dependencies {
   implementation(libs.androidx.ui)
   implementation(libs.androidx.ui.graphics)
   implementation(libs.androidx.ui.tooling.preview)
+implementation("androidx.compose.material3:material3:1.4.0")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
   androidTestImplementation(platform(libs.androidx.compose.bom))
   androidTestImplementation(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.tooling)
