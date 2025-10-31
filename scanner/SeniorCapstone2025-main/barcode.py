@@ -1,58 +1,3 @@
-"""
-from yapper import PiperSpeaker
-from yapper.constants import piper_enum_to_lang_code  # for picking a voice
-
-
-def _pick_piper_voice(lang_code: str = "fr_FR"): #en_GB, es_ES, fr_FR, 
-    
-    Returns the first Piper voice Enum member that matches the given language code.
-    If none found, returns None (PiperSpeaker will then use its default voice).
-    
-    for voice_enum, code in piper_enum_to_lang_code.items():
-        if code == lang_code:
-            for voice in voice_enum:
-                return voice
-    return None
-
-
-# Choose a voice; fall back to Piper default if none found
-_PIPER_VOICE = _pick_piper_voice("en_US")
-_SPEAKER = PiperSpeaker(voice=_PIPER_VOICE) if _PIPER_VOICE else PiperSpeaker()
-
-
-def speak(text: str):
-    Speak text via PiperSpeaker.
-    try:
-        _SPEAKER.say(text)
-    except Exception as e:
-        print(f"[TTS error] {e}")
-
-
-def lookup_sensor(result: str) -> str | None:
-    table = {
-        "2540": "Level Sensor: The Ultrasonic Level Sensor is used to measure the volume of liquid in a space using ultrasonic sound.",
-        "2543": "Coriolis Sensor: A Coriolis Sensor measures liquid flow rate using vibrating tubes; the phase shift is proportional to mass flow.",
-    }
-    return table.get(result)
-
-
-def main():
-    raw = input("Scan Sensor to learn more:\n").strip()
-    description = lookup_sensor(raw)
-
-    if description:
-        print(description)
-        speak(description)
-    else:
-        msg = f"Sorry, no sensor found for code {raw}."
-        print(msg)
-        speak(msg)
-
-
-if __name__ == "__main__":
-    main()
-"""
-
 import argparse
 import json
 import os
@@ -70,6 +15,7 @@ def load_sensors(json_path: str = "sensors.json") -> Dict[str, str]:
     """
     if not os.path.exists(json_path):
         starter = {
+            #TODO Add more sensors to this list
             "2540": "Level Sensor: The Ultrasonic Level Sensor is used to measure the volume of liquid in a space using ultrasonic sound.",
             "2543": "Coriolis Sensor: A Coriolis Sensor measures liquid flow rate using vibrating tubes; the phase shift is proportional to mass flow.",
         }
