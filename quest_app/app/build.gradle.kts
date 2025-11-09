@@ -11,7 +11,7 @@ android {
 
   defaultConfig {
     applicationId = "com.mycompany.CapstoneProject"
-    minSdk = 29
+    minSdk = 33
     //noinspection ExpiredTargetSdkVersion
     targetSdk = 34
     versionCode = 1
