@@ -66,13 +66,10 @@ fun CardList() {
   val context = LocalContext.current
 
   Column(
-      modifier =
-          Modifier.clip(RoundedCornerShape(32.dp))
-              .fillMaxSize()
-              .background(
-                          Color(0xff252533)
-              )
-              .padding(16.dp),
+      modifier = Modifier.clip(RoundedCornerShape(32.dp))
+          .fillMaxSize()
+          .background(Color(0xff252533))
+          .padding(16.dp),
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.CenterHorizontally,
   ) {
@@ -87,25 +84,31 @@ fun CardList() {
             },
         )
       }
+      CardItem(
+          title = "Exit",
+          onClick = { 
+              val intent = Intent("com.mycompany.EXIT_APP")
+              context.sendBroadcast(intent)
+          }
+      )
     }
   }
 }
+
 @Composable
 fun CardItem(title: String, onClick: () -> Unit) {
   Box(
-      modifier =
-          Modifier.fillMaxWidth()
-              .clip(RoundedCornerShape(16.dp))
-              .background(
-                  brush = Brush.linearGradient(
-                      colors = listOf(
-                          Color(0xffa4a2e0),
-                          Color(0xeeebebf5)
-                      )
+      modifier = Modifier.fillMaxWidth()
+          .clip(RoundedCornerShape(16.dp))
+          .background(
+              brush = Brush.linearGradient(
+                  colors = listOf(
+                      Color(0xffa4a2e0),
+                      Color(0xeeebebf5)
                   )
               )
-
-              .clickable(onClick = onClick),
+          )
+          .clickable(onClick = onClick),
   ) {
     Column(
         modifier = Modifier.fillMaxWidth().padding(16.dp),

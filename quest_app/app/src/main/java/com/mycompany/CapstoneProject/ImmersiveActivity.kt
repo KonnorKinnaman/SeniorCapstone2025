@@ -42,6 +42,7 @@ class ImmersiveActivity : AppSystemActivity() {
   private val activityScope = CoroutineScope(Dispatchers.Main)
 
   lateinit var receiver: BroadcastReceiver
+  private lateinit var exitReceiver: BroadcastReceiver
 
   override fun registerFeatures(): List<SpatialFeature> {
     val features =
@@ -72,6 +73,13 @@ class ImmersiveActivity : AppSystemActivity() {
       environmentEntity?.setComponent(environmentMesh!!)
     }
 
+    exitReceiver =
+        object : BroadcastReceiver() {
+          override fun onReceive(context: Context, intent: Intent) {
+            finish()
+          }
+        }
+    registerReceiver(exitReceiver, IntentFilter("com.mycompany.EXIT_APP"), RECEIVER_EXPORTED)
   }
 
   override fun onSceneReady() {
@@ -145,7 +153,12 @@ class ImmersiveActivity : AppSystemActivity() {
     )
   }*/
   override fun onDestroy() {
-    unregisterReceiver(receiver)
+    if (::receiver.isInitialized) {
+      unregisterReceiver(receiver)
+    }
+    if (::exitReceiver.isInitialized) {
+      unregisterReceiver(exitReceiver)
+    }
     super.onDestroy()
   }
 
