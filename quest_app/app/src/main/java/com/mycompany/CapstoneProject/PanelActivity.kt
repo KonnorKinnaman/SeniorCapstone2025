@@ -32,24 +32,24 @@ class PanelActivity : ComponentActivity() {
     val webViewUrls: List<Pair<String, String>> =
         listOf(
             Pair(
-                "Fluid Analysis and Applications",
-                "https://www.youtube.com/embed/6aKbrPp09jo?autoplay=1;fs=1;autohide=0;hd=0;",
+                "Liquiphant",
+                "https://www.youtube-nocookie.com/embed/H3lJlXBuXkY?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
             Pair(
-                "About the Industrial Process Control Cart (IPCC)",
-                "https://www.youtube.com/embed/dfXtUbROf20?autoplay=1;fs=1;autohide=0;hd=0;",
+                "Proline Promag P-300",
+                "https://www.youtube-nocookie.com/embed/gemNqI9D42k?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
             Pair(
-                "Coriolis Sensor",
-                "https://www.youtube.com/embed/qCBqGUufbVE?autoplay=1;fs=1;autohide=0;hd=0;",
+                "Levelflex",
+                "https://www.youtube-nocookie.com/embed/WY6Bj3f6piE?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
             Pair(
-                "Fluid Pressure Sensing",
-                "https://www.youtube.com/embed/UnWCxIlKyNM?autoplay=1;fs=1;autohide=0;hd=0;",
+                "MicroPilot FMR51",
+                "https://www.youtube-nocookie.com/embed/3IdBuVEssvo?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
             Pair(
-                "MicroPilot",
-                "https://www.youtube.com/embed/0Q9cH-JxEGg?autoplay=1;fs=1;autohide=0;hd=0;",
+                "MicroPilot FWR30",
+                "https://www.youtube-nocookie.com/embed/xXZWKa74syE?autoplay=1;fs=1;autohide=0;hd=0;",
             ),
         )
   }
@@ -66,13 +66,10 @@ fun CardList() {
   val context = LocalContext.current
 
   Column(
-      modifier =
-          Modifier.clip(RoundedCornerShape(32.dp))
-              .fillMaxSize()
-              .background(
-                          Color(0xff252533)
-              )
-              .padding(16.dp),
+      modifier = Modifier.clip(RoundedCornerShape(32.dp))
+          .fillMaxSize()
+          .background(Color(0xff252533))
+          .padding(16.dp),
       verticalArrangement = Arrangement.Center,
       horizontalAlignment = Alignment.CenterHorizontally,
   ) {
@@ -87,25 +84,31 @@ fun CardList() {
             },
         )
       }
+      CardItem(
+          title = "Exit",
+          onClick = { 
+              val intent = Intent("com.mycompany.EXIT_APP")
+              context.sendBroadcast(intent)
+          }
+      )
     }
   }
 }
+
 @Composable
 fun CardItem(title: String, onClick: () -> Unit) {
   Box(
-      modifier =
-          Modifier.fillMaxWidth()
-              .clip(RoundedCornerShape(16.dp))
-              .background(
-                  brush = Brush.linearGradient(
-                      colors = listOf(
-                          Color(0xffa4a2e0),
-                          Color(0xeeebebf5)
-                      )
+      modifier = Modifier.fillMaxWidth()
+          .clip(RoundedCornerShape(16.dp))
+          .background(
+              brush = Brush.linearGradient(
+                  colors = listOf(
+                      Color(0xffa4a2e0),
+                      Color(0xeeebebf5)
                   )
               )
-
-              .clickable(onClick = onClick),
+          )
+          .clickable(onClick = onClick),
   ) {
     Column(
         modifier = Modifier.fillMaxWidth().padding(16.dp),
