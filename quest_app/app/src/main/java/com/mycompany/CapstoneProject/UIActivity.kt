@@ -1,5 +1,6 @@
 package com.mycompany.CapstoneProject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material3.*
@@ -20,15 +22,41 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mycompany.CapstoneProject.ui.theme.VRUITheme
 
 class UIActivity : ComponentActivity() {
+
+    companion object {
+        val webViewUrls: List<Pair<String, String>> =
+            listOf(
+                Pair(
+                    "Fluid Analysis and Applications",
+                    "https://www.youtube.com/embed/6aKbrPp09jo?autoplay=1;fs=1;autohide=0;hd=0;",
+                ),
+                Pair(
+                    "About the Industrial Process Control Cart (IPCC)",
+                    "https://www.youtube.com/embed/dfXtUbROf20?autoplay=1;fs=1;autohide=0;hd=0;",
+                ),
+                Pair(
+                    "Coriolis Sensor",
+                    "https://www.youtube.com/embed/qCBqGUufbVE?autoplay=1;fs=1;autohide=0;hd=0;",
+                ),
+                Pair(
+                    "Fluid Pressure Sensing",
+                    "https://www.youtube.com/embed/UnWCxIlKyNM?autoplay=1;fs=1;autohide=0;hd=0;",
+                ),
+                Pair(
+                    "MicroPilot",
+                    "https://www.youtube.com/embed/0Q9cH-JxEGg?autoplay=1;fs=1;autohide=0;hd=0;",
+                ),
+            )
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -53,7 +81,7 @@ private val GlassBackground = Color(0x0DFFFFFF) // 5% opacity
 private val GlassBorder = Color(0x1AFFFFFF) // 10% opacity
 
 enum class AppState {
-    WARNING, HOME, TUTORIAL
+    WARNING, HOME, TUTORIAL, INFORMATION
 }
 
 @Composable
@@ -100,7 +128,15 @@ fun AppScreen() {
                     })
                     AppState.TUTORIAL -> TutorialScreen(
                         feature = selectedFeature ?: "Unknown",
-                        onBack = { appState = AppState.HOME }
+                        onBack = { appState = AppState.HOME },
+                        onContinue = {
+                            if (selectedFeature == "Sensors") {
+                                appState = AppState.INFORMATION
+                            }
+                        }
+                    )
+                    AppState.INFORMATION -> CardList(
+                        onBack = {appState = AppState.HOME}
                     )
                 }
             }
@@ -189,7 +225,8 @@ fun HomeScreen(onFeatureSelected: (String) -> Unit) {
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Here you can view 3D models of different items. Select a feature below to get started and see a tutorial."
+                text = "Here you can view 3D models of different items. Select a feature below to get started and see a tutorial.",
+                color = AccentWhite
             )
             Spacer(modifier = Modifier.height(16.dp))
             Row(
@@ -227,50 +264,17 @@ fun HomeScreen(onFeatureSelected: (String) -> Unit) {
             horizontalArrangement = Arrangement.SpaceAround
         ) {
             FeatureBox(
-                feature = "TTS",
-                onClick = { onFeatureSelected("TTS") }
-            )
-            FeatureBox(
                 feature = "Scan",
                 onClick = { onFeatureSelected("Scan") }
+            )
+            FeatureBox(
+                feature = "Sensors",
+                onClick = { onFeatureSelected("Sensors") }
             )
             FeatureBox(
                 feature = "ChatGPT",
                 onClick = { onFeatureSelected("ChatGPT") }
             )
-        }
-        Spacer(modifier = Modifier.height(32.dp))
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceAround
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(80.dp)
-                    .background(DarkBlue, RoundedCornerShape(16.dp))
-                    .border(1.dp, Color.White.copy(alpha = 0.1f), RoundedCornerShape(16.dp))
-                    .clip(RoundedCornerShape(16.dp))
-                    .padding(8.dp),
-                contentAlignment = Alignment.Center
-            ) { Text(text = "3D Model A", fontSize = 12.sp) }
-            Box(
-                modifier = Modifier
-                    .size(80.dp)
-                    .background(DarkBlue, RoundedCornerShape(16.dp))
-                    .border(1.dp, Color.White.copy(alpha = 0.1f), RoundedCornerShape(16.dp))
-                    .clip(RoundedCornerShape(16.dp))
-                    .padding(8.dp),
-                contentAlignment = Alignment.Center
-            ) { Text(text = "3D Model B", fontSize = 12.sp) }
-            Box(
-                modifier = Modifier
-                    .size(80.dp)
-                    .background(DarkBlue, RoundedCornerShape(16.dp))
-                    .border(1.dp, Color.White.copy(alpha = 0.1f), RoundedCornerShape(16.dp))
-                    .clip(RoundedCornerShape(16.dp))
-                    .padding(8.dp),
-                contentAlignment = Alignment.Center
-            ) { Text(text = "3D Model C", fontSize = 12.sp) }
         }
     }
 }
@@ -291,7 +295,7 @@ fun FeatureBox(feature: String, onClick: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             when (feature) {
-                "TTS" -> {
+                "Sensors" -> {
                     // Custom SVG-like icon
                     Box(modifier = Modifier.size(48.dp)) {
                         Icon(imageVector = Icons.AutoMirrored.Filled.VolumeUp, contentDescription = "TTS Icon", tint = AccentPurple, modifier = Modifier.size(48.dp))
@@ -309,7 +313,7 @@ fun FeatureBox(feature: String, onClick: () -> Unit) {
                 }
                 "ChatGPT" -> {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_chatgpt),
+                        imageVector = Icons.AutoMirrored.Filled.VolumeUp,
                         contentDescription = "ChatGPT Icon",
                         tint = AccentPurple,
                         modifier = Modifier.size(48.dp)
@@ -323,12 +327,12 @@ fun FeatureBox(feature: String, onClick: () -> Unit) {
 }
 
 @Composable
-fun TutorialScreen(feature: String, onBack: () -> Unit) {
+fun TutorialScreen(feature: String, onBack: () -> Unit, onContinue: () -> Unit) {
     val (title, description, buttonText) = when (feature) {
-        "TTS" -> Triple(
-            "Text-to-Speech (TTS) Tutorial",
-            "With the TTS feature, you can hear a description of the 3D models. Simply point at an object and tap the trigger button on your controller to activate the text-to-speech narration.",
-            "Activate TTS Feature"
+        "Sensors" -> Triple(
+            "Sensors Tutorial",
+            "This feature allows you to view information about various sensors. Tap the button below to see the list of sensors.",
+            "View Sensors"
         )
         "Scan" -> Triple(
             "3D Scan Tutorial",
@@ -357,12 +361,13 @@ fun TutorialScreen(feature: String, onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = description,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = AccentWhite
             )
         }
         Spacer(modifier = Modifier.height(24.dp))
         Button(
-            onClick = { /* Handle feature activation */ },
+            onClick = onContinue,
             colors = ButtonDefaults.buttonColors(containerColor = AccentPurple),
             modifier = Modifier
                 .fillMaxWidth()
@@ -378,15 +383,64 @@ fun TutorialScreen(feature: String, onBack: () -> Unit) {
                 .fillMaxWidth()
                 .height(56.dp)
         ) {
-            Text(text = "Back to Home", fontWeight = FontWeight.SemiBold, color = Color.White)
+            Text(text = "Back to Home", fontWeight = FontWeight.SemiBold, color = DarkNavy)
         }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    VRUITheme {
-        AppScreen()
+fun CardList(onBack: () -> Unit) {
+    val context = LocalContext.current
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xff252533))
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+            UIActivity.webViewUrls.forEach { (title, url) ->
+                CardItem(
+                    title = title,
+                    onClick = {
+                        val intent = Intent("com.mycompany.PLAY_VIDEO")
+                        intent.putExtra("webviewURI", url)
+                        context.sendBroadcast(intent)
+                    },
+                )
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(
+                onClick = onBack,
+                colors = ButtonDefaults.buttonColors(containerColor = AccentWhite),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+            ) {
+                Text(text = "Back to Home", fontWeight = FontWeight.SemiBold, color = DarkNavy)
+            }
+        }
+    }
+}
+
+@Composable
+fun CardItem(title: String, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier.fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color(0xffa4a2e0),
+                        Color(0xeeebebf5)
+                    )
+                )
+            )
+            .clickable(onClick = onClick)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        BasicText(text = title, style = TextStyle(fontSize = 25.sp, color = DarkNavy))
     }
 }

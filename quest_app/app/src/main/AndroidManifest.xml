@@ -75,7 +75,7 @@
       </intent-filter>
     </activity>
     <activity
-      android:name="com.mycompany.CapstoneProject.PanelActivity"
+      android:name="com.mycompany.CapstoneProject.UIActivity"
       android:allowEmbedded="true"
       android:theme="@style/Theme.Transparent"
       android:exported="true"

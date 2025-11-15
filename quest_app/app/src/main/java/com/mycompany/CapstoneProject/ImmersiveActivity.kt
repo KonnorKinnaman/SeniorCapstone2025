@@ -137,7 +137,7 @@ class ImmersiveActivity : AppSystemActivity() {
         },
         // Registering Activity-based compose panel
         PanelRegistration(R.id.panel_activity) {
-          activityClass = PanelActivity::class.java
+          activityClass = UIActivity::class.java
           config {
             includeGlass = false
             layerConfig = LayerConfig()
