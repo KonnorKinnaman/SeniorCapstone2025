@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.painterResource
 import com.mycompany.CapstoneProject.ui.theme.VRUITheme
 
 class UIActivity : ComponentActivity() {
@@ -36,24 +37,24 @@ class UIActivity : ComponentActivity() {
         val webViewUrls: List<Pair<String, String>> =
             listOf(
                 Pair(
-                    "Fluid Analysis and Applications",
-                    "https://www.youtube.com/embed/6aKbrPp09jo?autoplay=1;fs=1;autohide=0;hd=0;",
+                    "Levelflex",
+                    "https://www.youtube.com/embed/WY6Bj3f6piE?autoplay=1;fs=1;autohide=0;hd=0;",
                 ),
                 Pair(
-                    "About the Industrial Process Control Cart (IPCC)",
+                    "Liquiphant",
                     "https://www.youtube.com/embed/dfXtUbROf20?autoplay=1;fs=1;autohide=0;hd=0;",
                 ),
                 Pair(
-                    "Coriolis Sensor",
-                    "https://www.youtube.com/embed/qCBqGUufbVE?autoplay=1;fs=1;autohide=0;hd=0;",
+                    "Promag P 300",
+                    "https://www.youtube.com/embed/H3lJlXBuXkY?autoplay=1;fs=1;autohide=0;hd=0;",
                 ),
                 Pair(
-                    "Fluid Pressure Sensing",
-                    "https://www.youtube.com/embed/UnWCxIlKyNM?autoplay=1;fs=1;autohide=0;hd=0;",
+                    "Prosonic M",
+                    "https://www.youtube.com/embed/iwVBUo11UAU?autoplay=1;fs=1;autohide=0;hd=0;",
                 ),
                 Pair(
-                    "MicroPilot",
-                    "https://www.youtube.com/embed/0Q9cH-JxEGg?autoplay=1;fs=1;autohide=0;hd=0;",
+                    "Micropilot",
+                    "https://www.youtube.com/embed/3IdBuVEssvo?autoplay=1;fs=1;autohide=0;hd=0;",
                 ),
             )
     }
@@ -313,7 +314,7 @@ fun FeatureBox(feature: String, onClick: () -> Unit) {
                 }
                 "ChatGPT" -> {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Filled.VolumeUp,
+                        painter = painterResource(id = R.drawable.openai_logo),
                         contentDescription = "ChatGPT Icon",
                         tint = AccentPurple,
                         modifier = Modifier.size(48.dp)
@@ -335,12 +336,12 @@ fun TutorialScreen(feature: String, onBack: () -> Unit, onContinue: () -> Unit) 
             "View Sensors"
         )
         "Scan" -> Triple(
-            "3D Scan Tutorial",
+            "Scan Tutorial",
             "The Scan feature allows you to capture and save real-world objects as new 3D models. Hold down the \"Scan\" button on your controller and slowly move around the object to capture its geometry.",
             "Activate Scan Feature"
         )
         "ChatGPT" -> Triple(
-            "ChatGPT Integration Tutorial",
+            "ChatGPT Tutorial",
             "Ask questions about any of the 3D models using natural language. The ChatGPT feature will provide detailed information and insights about the selected object. To use it, simply say \"Hey, AI\" and then ask your question.",
             "Activate ChatGPT Feature"
         )
